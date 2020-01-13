@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Mon Jan  6 11:34:58 2020
+# Process ID: 27292
+# Current directory: C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.runs/synth_1
+# Command line: vivado.exe -log display_demo_dvi.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source display_demo_dvi.tcl
+# Log file: C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.runs/synth_1/display_demo_dvi.vds
+# Journal file: C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source display_demo_dvi.tcl -notrace
