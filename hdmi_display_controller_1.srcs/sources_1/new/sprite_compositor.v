@@ -65,11 +65,11 @@ module sprite_compositor(
     4'd0,4'd1,4'd0,4'd0,4'd0,4'd1,4'd1,4'd0,4'd0,4'd1,4'd1,4'd0,4'd0,4'd0,4'd1,4'd0,
     4'd0,4'd0,4'd0,4'd0,4'd0,4'd0,4'd0,4'd0,4'd0,4'd0,4'd0,4'd0,4'd0,4'd0,4'd0,4'd0 
     };
-    assign sprite_hit_x = (i_x >= sprite_x) && (i_x < sprite_x + 32);
-    assign sprite_hit_y = (i_y >= sprite_y) && (i_y < sprite_y + 32);
+    assign sprite_hit_x = (i_x >= sprite_x) && (i_x < sprite_x + 64);
+    assign sprite_hit_y = (i_y >= sprite_y) && (i_y < sprite_y + 64);
     
-    assign sprite_render_x = (i_x - sprite_x)>>1;
-    assign sprite_render_y = (i_y - sprite_y)>>1;
+    assign sprite_render_x = (i_x - sprite_x)>>2;
+    assign sprite_render_y = (i_y - sprite_y)>>2;
     wire [1:0] selected_palette;
     assign selected_palette = sprite_x_flip ? (sprite_y_flip ? sprite_data[15-sprite_render_y][15-sprite_render_x]: sprite_data[sprite_render_y][15-sprite_render_x])
                                             : (sprite_y_flip ? sprite_data[15-sprite_render_y][sprite_render_x]   : sprite_data[sprite_render_y][sprite_render_x]);
@@ -82,11 +82,11 @@ module sprite_compositor(
     always @(posedge i_v_sync) begin
         sprite_x <= sprite_x + (sprite_x_direction ? 1 : -1);
         sprite_y <= sprite_y + (sprite_y_direction ? 1 : -1);
-        if (sprite_y == 720-32)
+        if (sprite_y == 720-64)
             sprite_y_direction <= 0;
         else if (sprite_y <= 1)
             sprite_y_direction <= 1;
-        if (sprite_x == 1280-32) begin
+        if (sprite_x == 1280-64) begin
             sprite_x_direction <= 0;
             sprite_x_flip <= 1;
         end
