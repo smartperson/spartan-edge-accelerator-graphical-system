@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.runs/impl_1'
+HD_PWD='C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

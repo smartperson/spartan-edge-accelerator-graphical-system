@@ -65,19 +65,19 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param chipscope.maxJobs 3
+  set_param chipscope.maxJobs 4
   set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7s15ftgb196-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.cache/wt} [current_project]
-  set_property parent.project_path {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.xpr} [current_project]
-  set_property ip_repo_paths C:/Xilinx/custom_ips [current_project]
+  set_property webtalk.parent_dir C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.cache/wt [current_project]
+  set_property parent.project_path C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.xpr [current_project]
+  set_property ip_repo_paths C:/../Xilinx/custom_ips [current_project]
   update_ip_catalog
-  set_property ip_output_repo {{C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.cache/ip}} [current_project]
+  set_property ip_output_repo C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  add_files -quiet {{C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.runs/synth_1/display_demo_dvi.dcp}}
-  read_xdc {{C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/constrs_1/imports/new/test_pin.xdc}}
+  add_files -quiet C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.runs/synth_1/display_demo_dvi.dcp
+  read_xdc C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/constrs_1/imports/new/test_pin.xdc
   link_design -top display_demo_dvi -part xc7s15ftgb196-1
   close_msg_db -file init_design.pb
 } RESULT]

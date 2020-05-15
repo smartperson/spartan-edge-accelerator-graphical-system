@@ -17,32 +17,36 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 3
+set_param chipscope.maxJobs 4
 set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7s15ftgb196-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.cache/wt} [current_project]
-set_property parent.project_path {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.xpr} [current_project]
+set_property webtalk.parent_dir C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.cache/wt [current_project]
+set_property parent.project_path C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_repo_paths c:/Xilinx/custom_ips [current_project]
+set_property ip_repo_paths c:Xilinx/custom_ips [current_project]
 update_ip_catalog
-set_property ip_output_repo {c:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.cache/ip} [current_project]
+set_property ip_output_repo c:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
-read_verilog -library xil_defaultlib -sv {{C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/new/sprite_compositor.v}}
+read_mem C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/new/ram_data.hex
+read_verilog -library xil_defaultlib -sv {
+  C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/new/bg_compositor.v
+  C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/new/sprite_compositor.v
+  C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/imports/rtl/demo/display_demo_dvi.v
+}
 read_verilog -library xil_defaultlib {
-  {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/async_reset.v}
-  {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/new/bg_compositor.v}
-  {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/display_clocks.v}
-  {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/display_timings.v}
-  {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/dvi_generator.v}
-  {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/new/gfx_compositor.v}
-  {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/serializer_10to1.v}
-  {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/tmds_encoder_dvi.v}
-  {C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/demo/display_demo_dvi.v}
+  C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/imports/rtl/async_reset.v
+  C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/imports/rtl/display_clocks.v
+  C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/imports/rtl/display_timings.v
+  C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/imports/rtl/dvi_generator.v
+  C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/new/gfx_compositor.v
+  C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/imports/rtl/serializer_10to1.v
+  C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/new/simple_ram.v
+  C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/sources_1/imports/rtl/tmds_encoder_dvi.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -52,8 +56,8 @@ read_verilog -library xil_defaultlib {
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/constrs_1/imports/new/test_pin.xdc}}
-set_property used_in_implementation false [get_files {{C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/constrs_1/imports/new/test_pin.xdc}}]
+read_xdc C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/constrs_1/imports/new/test_pin.xdc
+set_property used_in_implementation false [get_files C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.srcs/constrs_1/imports/new/test_pin.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

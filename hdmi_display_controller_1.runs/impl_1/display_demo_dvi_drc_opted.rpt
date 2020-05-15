@@ -1,8 +1,8 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Mon Jan  6 11:37:00 2020
-| Host         : DESKTOP-GIJDBOU running 64-bit major release  (build 9200)
+| Date         : Mon May  4 22:30:24 2020
+| Host         : DESKTOP-KTM56VH running 64-bit major release  (build 9200)
 | Command      : report_drc -file display_demo_dvi_drc_opted.rpt -pb display_demo_dvi_drc_opted.pb -rpx display_demo_dvi_drc_opted.rpx
 | Design       : display_demo_dvi
 | Device       : xc7s15ftgb196-1
@@ -24,11 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 2
+             Violations found: 4
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
+| DPIP-1   | Warning  | Input pipelining                                    | 2          |
 | RPBF-3   | Warning  | IO port buffering is incomplete                     | 1          |
 +----------+----------+-----------------------------------------------------+------------+
 
@@ -45,6 +46,16 @@ Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_des
  #where value2 is the voltage provided to configuration bank 0
 
 Refer to the device configuration user guide for more information.
+Related violations: <none>
+
+DPIP-1#1 Warning
+Input pipelining  
+DSP gfx_compositor_inst/bg_compositor_1/reg_addr2 input gfx_compositor_inst/bg_compositor_1/reg_addr2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#2 Warning
+Input pipelining  
+DSP gfx_compositor_inst/bg_compositor_1/reg_addr2 input gfx_compositor_inst/bg_compositor_1/reg_addr2/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 RPBF-3#1 Warning

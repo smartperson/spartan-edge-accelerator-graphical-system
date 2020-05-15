@@ -86,44 +86,12 @@ module display_demo_dvi(
     wire [7:0] red;
     wire [7:0] green;
     wire [7:0] blue;
-
-    // Test Card: Simple - ENABLE ONE TEST CARD INSTANCE ONLY
-//    test_card_simple #(
-//        .H_RES(1280)    // horizontal resolution
-//    ) test_card_inst (
-//        .i_x(sx),
-//        .o_red(red),
-//        .o_green(green),
-//        .o_blue(blue)
-//    );
-
-    // // Test Card: Squares - ENABLE ONE TEST CARD INSTANCE ONLY
-//     test_card_squares #(
-//         .H_RES(1280),   // horizontal resolution
-//         .V_RES(720)     // vertical resolution
-//     )
-//     test_card_inst (
-//         .i_x(sx),
-//         .i_y(sy),
-//         .o_red(red),
-//         .o_green(green),
-//         .o_blue(blue)
-//     );
-
-    // // Test Card: Gradient - ENABLE ONE TEST CARD INSTANCE ONLY
-//     localparam GRAD_STEP = 2;  // step right shift: 480=2, 720=2, 1080=3
-//     test_card_gradient test_card_inst (
-//         .i_y(sy[GRAD_STEP+7:GRAD_STEP]),
-//         .i_x(sx[5:0]),
-//         .o_red(red),
-//         .o_green(green),
-//         .o_blue(blue)
-//     );
      
       gfx_compositor gfx_compositor_inst (
          .i_y(sy),
          .i_x(sx),
          .i_v_sync(v_sync),
+         .i_pix_clk(pix_clk),
          .o_red(red),
          .o_green(green),
          .o_blue(blue)

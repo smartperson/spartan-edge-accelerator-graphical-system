@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7s15ftgb196-1" LaunchTime="1578332094">
+<GenRun Id="impl_1" LaunchPart="xc7s15ftgb196-1" LaunchTime="1588645702">
   <File Type="BITSTR-BMM" Name="display_demo_dvi_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="display_demo_dvi_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="display_demo_dvi_timing_summary_init.rpt"/>
@@ -86,13 +86,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/bg_compositor.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/imports/rtl/display_clocks.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/display_clocks.v"/>
@@ -136,10 +129,24 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/simple_ram.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/imports/rtl/tmds_encoder_dvi.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/tmds_encoder_dvi.v"/>
         <Attr Name="ImportTime" Val="1578019203"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/bg_compositor.v">
+      <FileInfo SFType="SVerilog">
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -153,29 +160,9 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/imports/rtl/demo/display_demo_dvi.v">
-      <FileInfo>
+      <FileInfo SFType="SVerilog">
         <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/display_demo_dvi.v"/>
         <Attr Name="ImportTime" Val="1578019203"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/rtl/demo/test_card_gradient.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/test_card_gradient.v"/>
-        <Attr Name="ImportTime" Val="1578019204"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/rtl/demo/test_card_squares.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/test_card_squares.v"/>
-        <Attr Name="ImportTime" Val="1578019204"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -258,6 +245,12 @@
         <Attr Name="ImportTime" Val="1578019204"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/ram_data.hex">
+      <FileInfo SFType="MIF">
+        <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>

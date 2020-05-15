@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="44" Path="C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.xpr">
+<Project Version="7" Minor="44" Path="C:/Users/vkm21/OneDrive/Documents/GitHub/SEA-HDMI-Output/hdmi_display_controller_1.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="d5098b4c2e054fdd98a2d39949e26b43"/>
@@ -70,13 +70,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/bg_compositor.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/imports/rtl/display_clocks.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/display_clocks.v"/>
@@ -120,10 +113,24 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/new/simple_ram.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/rtl/tmds_encoder_dvi.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/tmds_encoder_dvi.v"/>
           <Attr Name="ImportTime" Val="1578019203"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/bg_compositor.v">
+        <FileInfo SFType="SVerilog">
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -137,29 +144,9 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/imports/rtl/demo/display_demo_dvi.v">
-        <FileInfo>
+        <FileInfo SFType="SVerilog">
           <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/display_demo_dvi.v"/>
           <Attr Name="ImportTime" Val="1578019203"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/rtl/demo/test_card_gradient.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/test_card_gradient.v"/>
-          <Attr Name="ImportTime" Val="1578019204"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/rtl/demo/test_card_squares.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/test_card_squares.v"/>
-          <Attr Name="ImportTime" Val="1578019204"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -242,6 +229,12 @@
           <Attr Name="ImportTime" Val="1578019204"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/ram_data.hex">
+        <FileInfo SFType="MIF">
+          <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
