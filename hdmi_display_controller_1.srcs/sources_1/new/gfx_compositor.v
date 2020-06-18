@@ -3,6 +3,7 @@ module gfx_compositor (
     input wire [15:0] i_y,
     input wire i_v_sync,
     input wire i_pix_clk,
+    input wire i_esp32,
     output wire [7:0] o_red,
     output wire [7:0] o_green,
     output wire [7:0] o_blue
@@ -45,6 +46,7 @@ module gfx_compositor (
         .i_x        (i_x),
         .i_y        (i_y),
         .i_v_sync   (i_v_sync),
+        .i_esp32    (i_esp32),
         .o_red      (sprite_red),
         .o_green    (sprite_green),
         .o_blue     (sprite_blue),

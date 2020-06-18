@@ -17,6 +17,7 @@
 module display_demo_dvi(
     input  wire CLK,                // board clock: 100 MHz on Arty/Basys3/Nexys
     input  wire RST_BTN,            // reset button
+    input  wire esp32_in,           // HACK input pin from ESP32
     inout  wire hdmi_tx_cec,        // CE control bidirectional
     input  wire hdmi_tx_hpd,        // hot-plug detect
     inout  wire hdmi_tx_rscl,       // DDC bidirectional
@@ -92,6 +93,7 @@ module display_demo_dvi(
          .i_x(sx),
          .i_v_sync(v_sync),
          .i_pix_clk(pix_clk),
+         .i_esp32(esp32_in),
          .o_red(red),
          .o_green(green),
          .o_blue(blue)

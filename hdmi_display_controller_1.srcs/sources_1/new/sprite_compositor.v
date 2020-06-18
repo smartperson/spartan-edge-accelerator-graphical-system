@@ -24,6 +24,7 @@ module sprite_compositor(
     input wire [15:0] i_x,
     input wire [15:0] i_y,
     input wire i_v_sync,
+    input wire i_esp32,
     output wire [7:0] o_red,
     output wire [7:0] o_green,
     output wire [7:0] o_blue,
@@ -112,19 +113,21 @@ module sprite_compositor(
     assign o_sprite_hit = (sprite_hit_y & sprite_hit_x) && (selected_palette != 2'd0);
     
     always @(posedge i_v_sync) begin
-        sprite_x <= sprite_x + (sprite_x_direction ? 1 : -1); //change to -1 later
-        sprite_y <= sprite_y + (sprite_y_direction ? 1 : -1); //change to -1 later
-        if (sprite_y == 720-64)
-            sprite_y_direction <= 0;
-        else if (sprite_y <= 1)
-            sprite_y_direction <= 1;
-        if (sprite_x == 1280-64) begin
-            sprite_x_direction <= 0;
-            sprite_x_flip <= 1;
-        end
-        else if (sprite_x <= 1) begin
+        if (i_esp32) begin
+            sprite_x <= sprite_x + (sprite_x_direction ? 1 : -1); //change to -1 later
+            sprite_y <= sprite_y + (sprite_y_direction ? 1 : -1); //change to -1 later
+            if (sprite_y == 720-64)
+                sprite_y_direction <= 0;
+            else if (sprite_y <= 1)
+                sprite_y_direction <= 1;
+            if (sprite_x == 1280-64) begin
+                sprite_x_direction <= 0;
+                sprite_x_flip <= 1;
+            end
+            else if (sprite_x <= 1) begin
             sprite_x_direction <= 1;
             sprite_x_flip <= 0;
+            end
         end
     end
     

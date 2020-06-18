@@ -68,7 +68,7 @@ module bg_compositor(
         8'h00, 8'hFF, 8'h00,
         8'h00, 8'h00, 8'hFE
     };
-    localparam [0:3][0:15][0:7] sprite_data = {
+    //localparam [0:3][0:15][0:7] sprite_data = {};
     
     assign sprite_hit_x = 1;//(i_x >= sprite_x) && (i_x < sprite_x + 64);
     assign sprite_hit_y = 1;//(i_y >= sprite_y) && (i_y < sprite_y + 64);
