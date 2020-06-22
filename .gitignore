@@ -46,11 +46,11 @@ unisims
 *.lib
 
 ## dirs
-vivado.cache/
-vivado.hw/
-vivado.ip_user_files/
-vivado.runs/
-vivado.sim/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
 
 ###### for Xilinx Vivado|ISE
 .Xil/
