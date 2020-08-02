@@ -49,7 +49,7 @@ DCBA98 76543210
 module simple_ram(
     i_din, i_we, i_addr, i_clk, o_dout
     );
-    parameter data_width=8, address_width=15,mem_elements=32768;
+    parameter data_width=16, address_width=15,mem_elements=20480;
     input [data_width-1:0] i_din;
     input [address_width-1:0] i_addr;
     input wire i_we, i_clk;
@@ -62,7 +62,7 @@ module simple_ram(
     The block_ram attribute must be set on the memory signal. */
     
     reg [address_width - 1:0] addr_reg;
-    reg [7:0] data_reg;
+    reg [data_width-1:0] data_reg;
     //assign addr_reg = i_addr;
     always @(posedge i_clk)
     begin
@@ -70,7 +70,7 @@ module simple_ram(
         if (i_we) mem[i_addr] <= i_din;
     end    
     assign o_dout = data_reg;
-    
+     
     parameter MEM_INIT_FILE = "ram_data.hex";
     initial begin
         if (MEM_INIT_FILE != "") begin

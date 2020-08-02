@@ -8,6 +8,7 @@ module gfx_compositor (
     output wire [7:0] o_green,
     output wire [7:0] o_blue
     );
+    
     wire bg_hit, sprite_hit;
     wire [7:0] bg_red;
     wire [7:0] bg_green;
@@ -16,20 +17,28 @@ module gfx_compositor (
     wire [7:0] sprite_green;
     wire [7:0] sprite_blue;
     
-    wire [7:0] ram_data;
+    wire [15:0] ram_data;
     wire ram_write;
     wire [14:0] ram_addr;
-    wire [7:0] load_data;
+    wire [15:0] load_data;
     
-    simple_ram simple_ram_1 (
+    /*simple_ram simple_ram_1 (
         .i_din(ram_data),
         .i_we (ram_write),
         .i_addr(ram_addr),
         .i_clk(i_pix_clk),
         .o_dout(load_data)
+    );*/
+    blk_mem_0 simple_ram_1 (
+        .clka(i_pix_clk),    // input wire clka
+        .ena(1),      // input wire ena
+        .wea(0),      // input wire [1 : 0] wea
+        .addra(ram_addr),  // input wire [14 : 0] addra
+        .dina(ram_data),    // input wire [15 : 0] dina
+        .douta(load_data)  // output wire [15 : 0] douta
     );
     
-    bg_compositor bg_compositor_1 (
+    bg_compositor #( .RAM_READ_START_CYCLE(5'b10011) ) bg_compositor_1 ( //11001
         .i_x        (i_x),
         .i_y        (i_y),
         .i_v_sync   (i_v_sync),
