@@ -47,12 +47,12 @@ module gfx_compositor (
 
     always @* //combinatorial clockless
     begin
-        if (ram_enable_1)
-            reg_ram_addr <= ram_addr_1;
-        else if (ram_enable_0)
+        if (ram_enable_0)
             reg_ram_addr <= ram_addr_0;
-        else
+        else if (ram_enable_1)
             reg_ram_addr <= ram_addr_1;
+        else
+            reg_ram_addr <= ram_addr_0;
     end
     assign ram_addr = reg_ram_addr;
     
@@ -65,18 +65,18 @@ module gfx_compositor (
         .douta(load_data)  // output wire [15 : 0] douta
     );
     
-//    bg_compositor #( .RAM_READ_START_CYCLE(5'b10000), .RAM_MAP_ADDR(15'h2800) ) bg_compositor_0 ( //11001
-//        .i_x_raw        (i_x),
-//        .i_y_raw        (i_y),
-//        .i_v_sync   (i_v_sync),
-//        .i_pix_clk  (i_pix_clk),
-//        .i_in_data  (load_data),
-//        .o_ram_enable (ram_enable_0),
-//        .o_addr     (ram_addr_0),
-//        .o_palette      (bg_palette_0),
-//        .o_color    (bg_color_0),
-//        .o_priority   (bg_hit_0)
-//    );
+    bg_compositor #( .RAM_READ_START_CYCLE(5'b10000), .RAM_MAP_ADDR(15'h2800) ) bg_compositor_0 ( //11001
+        .i_x_raw        (i_x),
+        .i_y_raw        (i_y),
+        .i_v_sync   (i_v_sync),
+        .i_pix_clk  (i_pix_clk),
+        .i_in_data  (load_data),
+        .o_ram_enable (ram_enable_0),
+        .o_addr     (ram_addr_0),
+        .o_palette      (bg_palette_0),
+        .o_color    (bg_color_0),
+        .o_priority   (bg_hit_0)
+    );
     
     bg_compositor #( .RAM_READ_START_CYCLE(5'b11000), .RAM_MAP_ADDR(15'h2000) ) bg_compositor_1 ( //11001
         .i_x_raw          (i_x),
@@ -104,11 +104,15 @@ module gfx_compositor (
     );
     
     reg [7:0] reg_red, reg_green, reg_blue;
-    always @(posedge i_pix_clk) begin
-        reg_red <= sprite_hit? sprite_red :      ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][2] : cg_palettes[bg_palette_1][bg_color_1][2] );
-        reg_green <= sprite_hit ? sprite_green : ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][1] : cg_palettes[bg_palette_1][bg_color_1][1] );
-        reg_blue <= sprite_hit ? sprite_blue :   ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][0] : cg_palettes[bg_palette_1][bg_color_1][0] );
-    end
+//    always @(posedge i_pix_clk) begin
+//        reg_red <= sprite_hit? sprite_red :      ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][2] : cg_palettes[bg_palette_1][bg_color_1][2] );
+//        reg_green <= sprite_hit ? sprite_green : ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][1] : cg_palettes[bg_palette_1][bg_color_1][1] );
+//        reg_blue <= sprite_hit ? sprite_blue :   ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][0] : cg_palettes[bg_palette_1][bg_color_1][0] );
+//    end
+    assign reg_red = sprite_hit? sprite_red :      ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][2] : cg_palettes[bg_palette_1][bg_color_1][2] );
+    assign reg_green = sprite_hit ? sprite_green : ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][1] : cg_palettes[bg_palette_1][bg_color_1][1] );
+    assign reg_blue = sprite_hit ? sprite_blue :   ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][0] : cg_palettes[bg_palette_1][bg_color_1][0] );
+
     assign o_red = reg_red;
     assign o_green = reg_green;
     assign o_blue = reg_blue;
