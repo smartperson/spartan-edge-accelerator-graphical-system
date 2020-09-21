@@ -19,6 +19,12 @@ module display_demo_dvi(
     input  wire RST_BTN,            // reset button
     input  wire esp32_in,           // HACK input pin from ESP32
     input  wire btn_user1,           // HACK input pin from ESP32
+    input  wire esp_qspi_clk,
+    input  wire esp_qspi_q,
+    input  wire esp_qspi_d,
+    input  wire esp_qspi_cs,
+    input  wire esp_qspi_wp,
+    input  wire esp_qspi_hd,
     inout  wire hdmi_tx_cec,        // CE control bidirectional
     input  wire hdmi_tx_hpd,        // hot-plug detect
     inout  wire hdmi_tx_rscl,       // DDC bidirectional
@@ -36,7 +42,17 @@ module display_demo_dvi(
     wire pix_clk;                   // pixel clock
     wire pix_clk_5x;                // 5x clock for 10:1 DDR SerDes
     wire clk_lock;                  // clock locked?
-
+    
+    reg reg_qspi_clk;
+    reg reg_qspi_q;
+    reg reg_qspi_d;
+    reg reg_qspi_cs;
+    reg reg_qspi_wp;
+    reg reg_qspi_hd;
+    
+    assign hdmi_tx_rscl  = reg_qspi_hd & reg_qspi_wp & reg_qspi_cs & reg_qspi_d
+        & reg_qspi_q & reg_qspi_clk;
+        
     display_clocks #(               // 640x480  800x600 1280x720 1920x1080
         .MULT_MASTER(37.125),       //    31.5     10.0   37.125    37.125
         .DIV_MASTER(5),             //       5        1        5         5
@@ -89,18 +105,24 @@ module display_demo_dvi(
     wire [7:0] green;
     wire [7:0] blue;
      
-      gfx_compositor gfx_compositor_inst (
-         .i_y(sy),
-         .i_x(sx),
-         .i_v_sync(v_sync),
-         .i_pix_clk(pix_clk),
-         .i_esp32(esp32_in),
-         .i_btn(btn_user1),
-         .o_red(red),
-         .o_green(green),
-         .o_blue(blue)
-         );
-
+    gfx_compositor gfx_compositor_inst (
+     .i_y(sy),
+     .i_x(sx),
+     .i_v_sync(v_sync),
+     .i_pix_clk(pix_clk),
+     .i_esp32(esp32_in),
+     .i_btn(btn_user1),
+     .qspi_clk(esp_qspi_clk),
+     .qspi_d    (esp_qspi_d),
+     .qspi_q    (esp_qspi_q),
+     .qspi_cs   (esp_qspi_cs),
+     .qspi_wp   (esp_qspi_wp),
+     .qspi_hd   (esp_qspi_hd),
+     .o_red(red),
+     .o_green(green),
+     .o_blue(blue)
+     );
+    
     // TMDS Encoding and Serialization
     wire tmds_ch0_serial, tmds_ch1_serial, tmds_ch2_serial, tmds_chc_serial;
     dvi_generator dvi_out (
@@ -133,5 +155,5 @@ module display_demo_dvi(
 
     assign hdmi_tx_cec   = 1'bz;
     assign hdmi_tx_rsda  = 1'bz;
-    assign hdmi_tx_rscl  = 1'b1;
+//    assign hdmi_tx_rscl  = 1'b1;
 endmodule

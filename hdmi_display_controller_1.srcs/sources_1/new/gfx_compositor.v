@@ -5,6 +5,12 @@ module gfx_compositor (
     input wire i_pix_clk,
     input wire i_esp32,
     input wire i_btn,
+    input wire qspi_clk,
+    input wire qspi_d,
+    input wire qspi_q,
+    input wire qspi_cs,
+    input wire qspi_wp,
+    input wire qspi_hd,
     output wire [7:0] o_red,
     output wire [7:0] o_green,
     output wire [7:0] o_blue
@@ -55,6 +61,7 @@ module gfx_compositor (
             reg_ram_addr <= ram_addr_0;
     end
     assign ram_addr = reg_ram_addr;
+    reg [7:0] reg_spi_data;
     
     blk_mem_0 simple_ram_1 (
         .clka(i_pix_clk),    // input wire clka
@@ -96,19 +103,25 @@ module gfx_compositor (
         .i_x        (i_x),
         .i_y        (i_y),
         .i_v_sync   (i_v_sync),
-        .i_esp32    (i_btn),
+        .i_esp32    (reg_spi_data && 8'b11111111),
         .o_red      (sprite_red),
         .o_green    (sprite_green),
         .o_blue     (sprite_blue),
         .o_sprite_hit   (sprite_hit)
     );
+
+    spi_receiver spi_receiver_1 (
+        .clk  (qspi_clk),
+        .q    (qspi_q),
+        .d    (qspi_d),
+        .cs   (qspi_cs),
+        .wp   (qspi_wp),
+        .hd   (qspi_hd),
+        .o_data (reg_spi_data)
+    );
     
     reg [7:0] reg_red, reg_green, reg_blue;
-//    always @(posedge i_pix_clk) begin
-//        reg_red <= sprite_hit? sprite_red :      ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][2] : cg_palettes[bg_palette_1][bg_color_1][2] );
-//        reg_green <= sprite_hit ? sprite_green : ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][1] : cg_palettes[bg_palette_1][bg_color_1][1] );
-//        reg_blue <= sprite_hit ? sprite_blue :   ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][0] : cg_palettes[bg_palette_1][bg_color_1][0] );
-//    end
+
     assign reg_red = sprite_hit? sprite_red :      ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][2] : cg_palettes[bg_palette_1][bg_color_1][2] );
     assign reg_green = sprite_hit ? sprite_green : ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][1] : cg_palettes[bg_palette_1][bg_color_1][1] );
     assign reg_blue = sprite_hit ? sprite_blue :   ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][0] : cg_palettes[bg_palette_1][bg_color_1][0] );
