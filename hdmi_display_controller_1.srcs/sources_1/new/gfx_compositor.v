@@ -1,4 +1,5 @@
 module gfx_compositor (
+    input wire clk,
     input wire [15:0] i_x,
     input wire [15:0] i_y,
     input wire i_v_sync,
@@ -51,14 +52,19 @@ module gfx_compositor (
         384'hDFDFDFF8F8F818484820706828887830A08838B898F80080000000000000000000000000000000000000000000000000
     };
 
+    wire [15:0] dma_addr;
+    wire [15:0] dma_data;
+    wire dma_we;
+
     always @* //combinatorial clockless
     begin
         if (ram_enable_0)
             reg_ram_addr <= ram_addr_0;
         else if (ram_enable_1)
             reg_ram_addr <= ram_addr_1;
-        else
-            reg_ram_addr <= ram_addr_0;
+        else if (dma_we) begin
+            reg_ram_addr <= dma_addr;
+            end
     end
     assign ram_addr = reg_ram_addr;
     reg [7:0] reg_spi_data;
@@ -66,9 +72,9 @@ module gfx_compositor (
     blk_mem_0 simple_ram_1 (
         .clka(i_pix_clk),    // input wire clka
         .ena(1),      // input wire ena
-        .wea(0),      // input wire [1 : 0] wea
+        .wea(dma_we && i_y>720),      // input wire [1 : 0] wea
         .addra(ram_addr),  // input wire [14 : 0] addra
-        .dina(ram_data),    // input wire [15 : 0] dina
+        .dina(dma_data),    // input wire [15 : 0] dina
         .douta(load_data)  // output wire [15 : 0] douta
     );
     
@@ -109,19 +115,19 @@ module gfx_compositor (
         .o_blue     (sprite_blue),
         .o_sprite_hit   (sprite_hit)
     );
-
-    spi_receiver spi_receiver_1 (
-        .clk  (qspi_clk),
-        .q    (qspi_q),
-        .d    (qspi_d),
-        .cs   (qspi_cs),
-        .wp   (qspi_wp),
-        .hd   (qspi_hd),
-        .o_data (reg_spi_data)
+    
+    spi_ram_controller spi_ram_controller_1 (
+        .clk (clk),
+        .i_qspi_din ({qspi_hd, qspi_wp, qspi_d, qspi_q}),
+        .i_qspi_cs  (qspi_cs),
+        .i_qspi_clk (qspi_clk),
+        .o_ram_addr (dma_addr),
+        .o_ram_data (dma_data),
+        .o_ram_write(dma_we)
     );
     
     reg [7:0] reg_red, reg_green, reg_blue;
-
+    //hack to add dma_we just so that synthesis keeps our variable and we can capture it in the ILA
     assign reg_red = sprite_hit? sprite_red :      ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][2] : cg_palettes[bg_palette_1][bg_color_1][2] );
     assign reg_green = sprite_hit ? sprite_green : ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][1] : cg_palettes[bg_palette_1][bg_color_1][1] );
     assign reg_blue = sprite_hit ? sprite_blue :   ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][0] : cg_palettes[bg_palette_1][bg_color_1][0] );

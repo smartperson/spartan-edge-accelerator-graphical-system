@@ -106,6 +106,7 @@ module display_demo_dvi(
     wire [7:0] blue;
      
     gfx_compositor gfx_compositor_inst (
+     .clk(CLK),
      .i_y(sy),
      .i_x(sx),
      .i_v_sync(v_sync),
