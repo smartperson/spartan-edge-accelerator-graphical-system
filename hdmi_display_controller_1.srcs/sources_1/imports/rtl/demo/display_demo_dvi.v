@@ -42,17 +42,17 @@ module display_demo_dvi(
     wire pix_clk;                   // pixel clock
     wire pix_clk_5x;                // 5x clock for 10:1 DDR SerDes
     wire clk_lock;                  // clock locked?
-
+    
     reg reg_qspi_clk;
     reg reg_qspi_q;
     reg reg_qspi_d;
     reg reg_qspi_cs;
     reg reg_qspi_wp;
     reg reg_qspi_hd;
-
+    
     assign hdmi_tx_rscl  = reg_qspi_hd & reg_qspi_wp & reg_qspi_cs & reg_qspi_d
         & reg_qspi_q & reg_qspi_clk;
-
+        
     display_clocks #(               // 640x480  800x600 1280x720 1920x1080
         .MULT_MASTER(37.125),       //    31.5     10.0   37.125    37.125
         .DIV_MASTER(5),             //       5        1        5         5
@@ -76,7 +76,7 @@ module display_demo_dvi(
     wire v_sync;                    // vertical sync
     wire de;                        // display enable
     wire frame;                     // frame start
-
+    
     assign esp32_io = v_sync; //(sy > 720) || (sy < -15);
 
     display_timings #(              // 640x480  800x600 1280x720 1920x1080
@@ -106,40 +106,7 @@ module display_demo_dvi(
     wire [7:0] red;
     wire [7:0] green;
     wire [7:0] blue;
-
-    // Test Card: Simple - ENABLE ONE TEST CARD INSTANCE ONLY
-//    test_card_simple #(
-//        .H_RES(1280)    // horizontal resolution
-//    ) test_card_inst (
-//        .i_x(sx),
-//        .o_red(red),
-//        .o_green(green),
-//        .o_blue(blue)
-//    );
-
-    // // Test Card: Squares - ENABLE ONE TEST CARD INSTANCE ONLY
-//     test_card_squares #(
-//         .H_RES(1280),   // horizontal resolution
-//         .V_RES(720)     // vertical resolution
-//     )
-//     test_card_inst (
-//         .i_x(sx),
-//         .i_y(sy),
-//         .o_red(red),
-//         .o_green(green),
-//         .o_blue(blue)
-//     );
-
-    // // Test Card: Gradient - ENABLE ONE TEST CARD INSTANCE ONLY
-//     localparam GRAD_STEP = 2;  // step right shift: 480=2, 720=2, 1080=3
-//     test_card_gradient test_card_inst (
-//         .i_y(sy[GRAD_STEP+7:GRAD_STEP]),
-//         .i_x(sx[5:0]),
-//         .o_red(red),
-//         .o_green(green),
-//         .o_blue(blue)
-//     );
-
+     
     gfx_compositor gfx_compositor_inst (
      .clk(CLK),
      .i_y(sy),
@@ -157,7 +124,7 @@ module display_demo_dvi(
      .o_green(green),
      .o_blue(blue)
      );
-
+    
     // TMDS Encoding and Serialization
     wire tmds_ch0_serial, tmds_ch1_serial, tmds_ch2_serial, tmds_chc_serial;
     dvi_generator dvi_out (
