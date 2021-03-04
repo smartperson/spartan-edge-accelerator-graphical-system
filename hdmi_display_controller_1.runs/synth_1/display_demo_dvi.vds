@@ -1,0 +1,551 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Mon Jan  6 11:34:58 2020
+# Process ID: 27292
+# Current directory: C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.runs/synth_1
+# Command line: vivado.exe -log display_demo_dvi.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source display_demo_dvi.tcl
+# Log file: C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.runs/synth_1/display_demo_dvi.vds
+# Journal file: C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source display_demo_dvi.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Xilinx/custom_ips'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.2/data/ip'.
+update_ip_catalog: Time (s): cpu = 00:00:03 ; elapsed = 00:00:10 . Memory (MB): peak = 300.016 ; gain = 0.000
+WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
+Current IP cache path is c:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.cache/ip 
+Command: synth_design -top display_demo_dvi -part xc7s15ftgb196-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7s15'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s15'
+INFO: [Device 21-403] Loading part xc7s15ftgb196-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 26408 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 763.742 ; gain = 234.254
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'display_demo_dvi' [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/demo/display_demo_dvi.v:17]
+INFO: [Synth 8-6157] synthesizing module 'display_clocks' [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/display_clocks.v:10]
+	Parameter MULT_MASTER bound to: 37.125000 - type: double 
+	Parameter DIV_MASTER bound to: 5 - type: integer 
+	Parameter DIV_5X bound to: 2.000000 - type: double 
+	Parameter DIV_1X bound to: 10 - type: integer 
+	Parameter IN_PERIOD bound to: 10.000000 - type: double 
+INFO: [Synth 8-6157] synthesizing module 'MMCME2_BASE' [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:40060]
+	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
+	Parameter CLKFBOUT_MULT_F bound to: 37.125000 - type: double 
+	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKIN1_PERIOD bound to: 10.000000 - type: double 
+	Parameter CLKOUT0_DIVIDE_F bound to: 2.000000 - type: double 
+	Parameter CLKOUT0_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT0_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT1_DIVIDE bound to: 10 - type: integer 
+	Parameter CLKOUT1_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT1_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT2_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT2_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT2_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT3_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT3_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT3_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT4_CASCADE bound to: FALSE - type: string 
+	Parameter CLKOUT4_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT4_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT4_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT5_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT5_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT5_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT6_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT6_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT6_PHASE bound to: 0.000000 - type: double 
+	Parameter DIVCLK_DIVIDE bound to: 5 - type: integer 
+	Parameter REF_JITTER1 bound to: 0.010000 - type: double 
+	Parameter STARTUP_WAIT bound to: FALSE - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'MMCME2_BASE' (1#1) [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:40060]
+INFO: [Synth 8-6155] done synthesizing module 'display_clocks' (2#1) [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/display_clocks.v:10]
+INFO: [Synth 8-6157] synthesizing module 'display_timings' [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/display_timings.v:10]
+	Parameter H_RES bound to: 1280 - type: integer 
+	Parameter V_RES bound to: 720 - type: integer 
+	Parameter H_FP bound to: 110 - type: integer 
+	Parameter H_SYNC bound to: 40 - type: integer 
+	Parameter H_BP bound to: 220 - type: integer 
+	Parameter V_FP bound to: 5 - type: integer 
+	Parameter V_SYNC bound to: 5 - type: integer 
+	Parameter V_BP bound to: 20 - type: integer 
+	Parameter H_POL bound to: 1 - type: integer 
+	Parameter V_POL bound to: 1 - type: integer 
+	Parameter H_STA bound to: 32'sb11111111111111111111111010001110 
+	Parameter HS_STA bound to: 32'sb11111111111111111111111011111100 
+	Parameter HS_END bound to: 32'sb11111111111111111111111100100100 
+	Parameter HA_STA bound to: 32'sb00000000000000000000000000000000 
+	Parameter HA_END bound to: 32'sb00000000000000000000010011111111 
+	Parameter V_STA bound to: 32'sb11111111111111111111111111100010 
+	Parameter VS_STA bound to: 32'sb11111111111111111111111111100111 
+	Parameter VS_END bound to: 32'sb11111111111111111111111111101100 
+	Parameter VA_STA bound to: 32'sb00000000000000000000000000000000 
+	Parameter VA_END bound to: 32'sb00000000000000000000001011001111 
+INFO: [Synth 8-6155] done synthesizing module 'display_timings' (3#1) [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/display_timings.v:10]
+INFO: [Synth 8-6157] synthesizing module 'gfx_compositor' [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/new/gfx_compositor.v:1]
+INFO: [Synth 8-6157] synthesizing module 'bg_compositor' [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/new/bg_compositor.v:23]
+	Parameter base_red bound to: 8'b00000000 
+	Parameter base_green bound to: 8'b00010000 
+	Parameter base_blue bound to: 8'b01001100 
+INFO: [Synth 8-6155] done synthesizing module 'bg_compositor' (4#1) [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/new/bg_compositor.v:23]
+INFO: [Synth 8-6157] synthesizing module 'sprite_compositor' [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/new/sprite_compositor.v:23]
+	Parameter palette_colors bound to: 96'b000000000000000000000000111111110000000000000000111111111111111111111111001000010010000111111111 
+	Parameter sprite_data bound to: 1024'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010001000100010000000000000000000000000000000000000001000100010001000100010001000100010001000000000000000000000001000100010010001000010001000100010010001000010000000000000000000100010010001000100010000100010010001000100010000000000000000000010001001000100011001100010001001000100011001100000000000000010001000100100010001100110001000100100010001100110001000000000001000100010001001000100001000100010001001000100001000100000000000100010001000100010001000100010001000100010001000100010000000000010001000100010001000100010001000100010001000100010001000000000001000100010001000100010001000100010001000100010001000100000000000100010001000100010001000100010001000100010001000100010000000000010001000000010001000100000000000100010001000000010001000000000001000000000000000100010000000000010001000000000000000100000000000000000000000000000000000000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'sprite_compositor' (5#1) [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/new/sprite_compositor.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'gfx_compositor' (6#1) [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/new/gfx_compositor.v:1]
+INFO: [Synth 8-6157] synthesizing module 'dvi_generator' [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/dvi_generator.v:8]
+INFO: [Synth 8-6157] synthesizing module 'tmds_encoder_dvi' [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/tmds_encoder_dvi.v:8]
+INFO: [Synth 8-251] 	x 9'bxxxxxxxxx x, x, A1 [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/tmds_encoder_dvi.v:71]
+INFO: [Synth 8-251] 	x 9'bxxxxxxxxx x, x, A0 [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/tmds_encoder_dvi.v:76]
+INFO: [Synth 8-251] 	x 9'bxxxxxxxxx x, x, B1 [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/tmds_encoder_dvi.v:83]
+INFO: [Synth 8-251] 	x 9'bxxxxxxxxx x, x, B0 [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/tmds_encoder_dvi.v:89]
+INFO: [Synth 8-6155] done synthesizing module 'tmds_encoder_dvi' (7#1) [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/tmds_encoder_dvi.v:8]
+INFO: [Synth 8-6157] synthesizing module 'async_reset' [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/async_reset.v:8]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/async_reset.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'async_reset' (8#1) [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/async_reset.v:8]
+INFO: [Synth 8-6157] synthesizing module 'serializer_10to1' [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/serializer_10to1.v:8]
+INFO: [Synth 8-6157] synthesizing module 'OSERDESE2' [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:50288]
+	Parameter DATA_RATE_OQ bound to: DDR - type: string 
+	Parameter DATA_RATE_TQ bound to: SDR - type: string 
+	Parameter DATA_WIDTH bound to: 10 - type: integer 
+	Parameter INIT_OQ bound to: 1'b1 
+	Parameter INIT_TQ bound to: 1'b1 
+	Parameter IS_CLKDIV_INVERTED bound to: 1'b0 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_D1_INVERTED bound to: 1'b0 
+	Parameter IS_D2_INVERTED bound to: 1'b0 
+	Parameter IS_D3_INVERTED bound to: 1'b0 
+	Parameter IS_D4_INVERTED bound to: 1'b0 
+	Parameter IS_D5_INVERTED bound to: 1'b0 
+	Parameter IS_D6_INVERTED bound to: 1'b0 
+	Parameter IS_D7_INVERTED bound to: 1'b0 
+	Parameter IS_D8_INVERTED bound to: 1'b0 
+	Parameter IS_T1_INVERTED bound to: 1'b0 
+	Parameter IS_T2_INVERTED bound to: 1'b0 
+	Parameter IS_T3_INVERTED bound to: 1'b0 
+	Parameter IS_T4_INVERTED bound to: 1'b0 
+	Parameter SERDES_MODE bound to: MASTER - type: string 
+	Parameter SRVAL_OQ bound to: 1'b0 
+	Parameter SRVAL_TQ bound to: 1'b0 
+	Parameter TBYTE_CTL bound to: FALSE - type: string 
+	Parameter TBYTE_SRC bound to: FALSE - type: string 
+	Parameter TRISTATE_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'OSERDESE2' (9#1) [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:50288]
+INFO: [Synth 8-6157] synthesizing module 'OSERDESE2__parameterized0' [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:50288]
+	Parameter DATA_RATE_OQ bound to: DDR - type: string 
+	Parameter DATA_RATE_TQ bound to: SDR - type: string 
+	Parameter DATA_WIDTH bound to: 10 - type: integer 
+	Parameter INIT_OQ bound to: 1'b1 
+	Parameter INIT_TQ bound to: 1'b1 
+	Parameter IS_CLKDIV_INVERTED bound to: 1'b0 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_D1_INVERTED bound to: 1'b0 
+	Parameter IS_D2_INVERTED bound to: 1'b0 
+	Parameter IS_D3_INVERTED bound to: 1'b0 
+	Parameter IS_D4_INVERTED bound to: 1'b0 
+	Parameter IS_D5_INVERTED bound to: 1'b0 
+	Parameter IS_D6_INVERTED bound to: 1'b0 
+	Parameter IS_D7_INVERTED bound to: 1'b0 
+	Parameter IS_D8_INVERTED bound to: 1'b0 
+	Parameter IS_T1_INVERTED bound to: 1'b0 
+	Parameter IS_T2_INVERTED bound to: 1'b0 
+	Parameter IS_T3_INVERTED bound to: 1'b0 
+	Parameter IS_T4_INVERTED bound to: 1'b0 
+	Parameter SERDES_MODE bound to: SLAVE - type: string 
+	Parameter SRVAL_OQ bound to: 1'b0 
+	Parameter SRVAL_TQ bound to: 1'b0 
+	Parameter TBYTE_CTL bound to: FALSE - type: string 
+	Parameter TBYTE_SRC bound to: FALSE - type: string 
+	Parameter TRISTATE_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'OSERDESE2__parameterized0' (9#1) [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:50288]
+INFO: [Synth 8-6155] done synthesizing module 'serializer_10to1' (10#1) [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/serializer_10to1.v:8]
+INFO: [Synth 8-6155] done synthesizing module 'dvi_generator' (11#1) [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/dvi_generator.v:8]
+INFO: [Synth 8-6157] synthesizing module 'OBUFDS' [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:46225]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter IOSTANDARD bound to: TMDS_33 - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'OBUFDS' (12#1) [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:46225]
+INFO: [Synth 8-6155] done synthesizing module 'display_demo_dvi' (13#1) [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/demo/display_demo_dvi.v:17]
+WARNING: [Synth 8-3917] design display_demo_dvi has port hdmi_tx_rscl driven by constant 1
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_x[15]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_x[14]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_x[13]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_x[12]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_x[11]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_x[10]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_x[9]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_x[8]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_y[15]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_y[14]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_y[13]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_y[12]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_y[11]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_y[10]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_y[9]
+WARNING: [Synth 8-3331] design bg_compositor has unconnected port i_y[8]
+WARNING: [Synth 8-3331] design display_demo_dvi has unconnected port hdmi_tx_cec
+WARNING: [Synth 8-3331] design display_demo_dvi has unconnected port hdmi_tx_rsda
+WARNING: [Synth 8-3331] design display_demo_dvi has unconnected port hdmi_tx_hpd
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 837.266 ; gain = 307.777
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 837.266 ; gain = 307.777
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 837.266 ; gain = 307.777
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 837.266 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/constrs_1/imports/new/test_pin.xdc]
+Finished Parsing XDC File [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/constrs_1/imports/new/test_pin.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/constrs_1/imports/new/test_pin.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/display_demo_dvi_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/display_demo_dvi_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Timing 38-2] Deriving generated clocks
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 939.262 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  MMCME2_BASE => MMCME2_ADV: 1 instance 
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 939.262 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 939.262 ; gain = 409.773
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7s15ftgb196-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 939.262 ; gain = 409.773
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 939.262 ; gain = 409.773
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.srcs/sources_1/imports/rtl/tmds_encoder_dvi.v:69]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 939.262 ; gain = 409.773
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     18 Bit       Adders := 2     
+	   2 Input     16 Bit       Adders := 2     
+	   3 Input     16 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 3     
+	   8 Input      5 Bit       Adders := 3     
+	   2 Input      5 Bit       Adders := 3     
+	  10 Input      5 Bit       Adders := 3     
+	  12 Input      5 Bit       Adders := 3     
+	   4 Input      5 Bit       Adders := 6     
+	   8 Input      4 Bit       Adders := 3     
++---XORs : 
+	   2 Input      1 Bit         XORs := 42    
++---Registers : 
+	               16 Bit    Registers := 2     
+	               10 Bit    Registers := 3     
+	                5 Bit    Registers := 3     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   5 Input     10 Bit        Muxes := 6     
+	   2 Input     10 Bit        Muxes := 9     
+	   4 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 3     
+	   2 Input      5 Bit        Muxes := 12    
+	  16 Input      2 Bit        Muxes := 8     
+	   2 Input      2 Bit        Muxes := 1     
+	  16 Input      1 Bit        Muxes := 5     
+	   2 Input      1 Bit        Muxes := 24    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module display_timings 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 2     
++---Registers : 
+	               16 Bit    Registers := 2     
+Module bg_compositor 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 3     
+Module sprite_compositor 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     18 Bit       Adders := 2     
+	   3 Input     16 Bit       Adders := 2     
++---Registers : 
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   4 Input      8 Bit        Muxes := 2     
+	  16 Input      2 Bit        Muxes := 8     
+	   2 Input      2 Bit        Muxes := 1     
+	  16 Input      1 Bit        Muxes := 5     
+Module gfx_compositor 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 3     
+Module tmds_encoder_dvi 
+Detailed RTL Component Info : 
++---Adders : 
+	   8 Input      5 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 1     
+	  10 Input      5 Bit       Adders := 1     
+	  12 Input      5 Bit       Adders := 1     
+	   4 Input      5 Bit       Adders := 2     
+	   8 Input      4 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 14    
++---Registers : 
+	               10 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
++---Muxes : 
+	   5 Input     10 Bit        Muxes := 2     
+	   2 Input     10 Bit        Muxes := 3     
+	   2 Input      5 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 8     
+Module async_reset 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 20 (col length:20)
+BRAMs: 20 (col length: RAMB18 20 RAMB36 10)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-3917] design display_demo_dvi has port hdmi_tx_rscl driven by constant 1
+WARNING: [Synth 8-3331] design display_demo_dvi has unconnected port hdmi_tx_cec
+WARNING: [Synth 8-3331] design display_demo_dvi has unconnected port hdmi_tx_rsda
+WARNING: [Synth 8-3331] design display_demo_dvi has unconnected port hdmi_tx_hpd
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:35 . Memory (MB): peak = 958.238 ; gain = 428.750
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 958.238 ; gain = 428.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:51 . Memory (MB): peak = 1081.891 ; gain = 552.402
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:49 ; elapsed = 00:00:51 . Memory (MB): peak = 1081.891 ; gain = 552.402
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1082.727 ; gain = 553.238
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1082.727 ; gain = 553.238
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1082.727 ; gain = 553.238
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1082.727 ; gain = 553.238
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1082.727 ; gain = 553.238
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1082.727 ; gain = 553.238
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------------+------+
+|      |Cell        |Count |
++------+------------+------+
+|1     |BUFG        |     2|
+|2     |CARRY4      |    48|
+|3     |LUT1        |    37|
+|4     |LUT2        |   222|
+|5     |LUT3        |    34|
+|6     |LUT4        |   110|
+|7     |LUT5        |    76|
+|8     |LUT6        |   136|
+|9     |MMCME2_BASE |     1|
+|10    |MUXF7       |     2|
+|11    |OSERDESE2   |     4|
+|12    |OSERDESE2_1 |     4|
+|13    |FDPE        |     3|
+|14    |FDRE        |    74|
+|15    |FDSE        |    35|
+|16    |IBUF        |     2|
+|17    |OBUF        |     1|
+|18    |OBUFDS      |     4|
++------+------------+------+
+
+Report Instance Areas: 
++------+-------------------------+-------------------+------+
+|      |Instance                 |Module             |Cells |
++------+-------------------------+-------------------+------+
+|1     |top                      |                   |   795|
+|2     |  display_clocks_inst    |display_clocks     |     2|
+|3     |  display_timings_inst   |display_timings    |   402|
+|4     |  dvi_out                |dvi_generator      |    85|
+|5     |    async_reset_instance |async_reset        |     3|
+|6     |    encode_ch0           |tmds_encoder_dvi   |    19|
+|7     |    encode_ch1           |tmds_encoder_dvi_0 |    25|
+|8     |    encode_ch2           |tmds_encoder_dvi_1 |    30|
+|9     |    serialize_ch0        |serializer_10to1   |     2|
+|10    |    serialize_ch1        |serializer_10to1_2 |     2|
+|11    |    serialize_ch2        |serializer_10to1_3 |     2|
+|12    |    serialize_chc        |serializer_10to1_4 |     2|
+|13    |  gfx_compositor_inst    |gfx_compositor     |   297|
+|14    |    bg_compositor_1      |bg_compositor      |     7|
+|15    |    sprite_compositor_1  |sprite_compositor  |   290|
++------+-------------------------+-------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1082.727 ; gain = 553.238
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:44 ; elapsed = 00:00:53 . Memory (MB): peak = 1082.727 ; gain = 451.242
+Synthesis Optimization Complete : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1082.727 ; gain = 553.238
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1082.727 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 55 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1082.727 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  MMCME2_BASE => MMCME2_ADV: 1 instance 
+
+INFO: [Common 17-83] Releasing license: Synthesis
+52 Infos, 25 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:00 ; elapsed = 00:01:03 . Memory (MB): peak = 1082.727 ; gain = 782.711
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1082.727 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Varun Mehta/Downloads/Demo_project-master/Demo_project-master/MIPI-In-HDMI-Out/hdmi_display_controller_1/hdmi_display_controller_1.runs/synth_1/display_demo_dvi.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file display_demo_dvi_utilization_synth.rpt -pb display_demo_dvi_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Jan  6 11:36:22 2020...

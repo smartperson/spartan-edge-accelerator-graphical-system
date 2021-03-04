@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7s15ftgb196-1" LaunchTime="1578332094">
+  <File Type="PA-TCL" Name="display_demo_dvi.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="display_demo_dvi_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="display_demo_dvi_reports.tcl"/>
+  <File Type="RDS-RDS" Name="display_demo_dvi.vds"/>
+  <File Type="RDS-UTIL" Name="display_demo_dvi_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="display_demo_dvi_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="display_demo_dvi.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="display_demo_dvi_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="display_demo_dvi_timing_summary_synth.pb"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/async_reset.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/async_reset.v"/>
+        <Attr Name="ImportTime" Val="1578019203"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/bg_compositor.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/display_clocks.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/display_clocks.v"/>
+        <Attr Name="ImportTime" Val="1578019203"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/display_timings.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/display_timings.v"/>
+        <Attr Name="ImportTime" Val="1578019203"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/dvi_generator.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/dvi_generator.v"/>
+        <Attr Name="ImportTime" Val="1578019203"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/gfx_compositor.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/serializer_10to1.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/serializer_10to1.v"/>
+        <Attr Name="ImportTime" Val="1578019203"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/tmds_encoder_dvi.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/tmds_encoder_dvi.v"/>
+        <Attr Name="ImportTime" Val="1578019203"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/sprite_compositor.v">
+      <FileInfo SFType="SVerilog">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/demo/display_demo_dvi.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/display_demo_dvi.v"/>
+        <Attr Name="ImportTime" Val="1578019203"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/demo/test_card_gradient.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/test_card_gradient.v"/>
+        <Attr Name="ImportTime" Val="1578019204"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/demo/test_card_squares.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/test_card_squares.v"/>
+        <Attr Name="ImportTime" Val="1578019204"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/demo/test_card_simple.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/test_card_simple.v"/>
+        <Attr Name="ImportTime" Val="1578019204"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/test/display_clocks_tb.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/test/display_clocks_tb.v"/>
+        <Attr Name="ImportTime" Val="1578019204"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/test/async_reset_tb.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/test/async_reset_tb.v"/>
+        <Attr Name="ImportTime" Val="1578019204"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/demo/display_demo_dvi_pmod3.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/display_demo_dvi_pmod3.v"/>
+        <Attr Name="ImportTime" Val="1578019203"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/demo/display_demo_vga.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/demo/display_demo_vga.v"/>
+        <Attr Name="ImportTime" Val="1578019204"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/test/display_timings_tb.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/test/display_timings_tb.v"/>
+        <Attr Name="ImportTime" Val="1578019204"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/test/serializer_10to1_tb.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/test/serializer_10to1_tb.v"/>
+        <Attr Name="ImportTime" Val="1578019204"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/test/tmds_encoder_dvi_tb.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../display_controller-master/display_controller-master/rtl/test/tmds_encoder_dvi_tb.v"/>
+        <Attr Name="ImportTime" Val="1578019204"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="display_demo_dvi"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/new/test_pin.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../vivado-tutorial-master/vivado-tutorial-master/vivado_tutorial.srcs/constrs_1/new/test_pin.xdc"/>
+        <Attr Name="ImportTime" Val="1577402206"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/imports/new/test_pin.xdc"/>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>
