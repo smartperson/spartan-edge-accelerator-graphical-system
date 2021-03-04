@@ -47,7 +47,7 @@ module bg_compositor
     reg [2:0] sprite_render_y;
     
     reg [15:0] i_x, i_y;
-    reg [13:0] x_scroll = 0;
+    reg [13:0] x_scroll = 1698; //NOTE: change this to experiment with craziness
     reg [9:0] y_scroll = (RAM_MAP_ADDR == 15'h2000) ? 304 : 304;
     reg y_dir = 0; //0 go up, 1 go down
     reg [3:0] counter;
@@ -75,13 +75,14 @@ module bg_compositor
             counter <= counter+1;
         end
     end
-
+    reg x_dir = 1;
     always @(posedge counter[1]) begin //@(posedge i_y_raw[0]) begin
-//        if (x_scroll < 10240)
-//            x_scroll <= x_scroll+1;
-//        else
-//            x_scroll <= 0;
+        if (x_scroll == 1700)
+          x_dir <= 0;
+        else if (x_scroll == 1698)
+            x_dir <= 1;
         y_scroll <= y_scroll + (y_dir ? +1: -1);
+        //x_scroll <= x_scroll + (x_dir ? +1: -1);
         x_scroll <= x_scroll+1;
     end
     

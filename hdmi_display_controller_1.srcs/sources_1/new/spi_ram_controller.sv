@@ -25,7 +25,7 @@ module spi_ram_controller(
     input  wire [3:0] i_qspi_din,
     input  wire i_qspi_cs,
     input  wire i_qspi_clk,
-    output wire [15:0] o_ram_addr,
+    output wire [13:0] o_ram_addr,
     output wire [15:0] o_ram_data,
     output wire o_ram_write
     );
@@ -41,11 +41,11 @@ module spi_ram_controller(
         .o_data (i_ram_data),
         .o_data_ready (spi_pulse)
     );
-    enum {idle = 3'b000, wait_addr = 3'b001, read_addr = 3'b010, latched_addr = 3'b011, wait_data = 3'b100, read_data = 3'b101, latched_data = 3'b110, increment_addr = 'b111} state, next_state; 
+    enum {idle, latched_addr, wait_data, latched_data, write_data, increment_pause, increment_addr} state, next_state; 
     reg [2:0] read_cycles = 0;
-    reg [15:0] reg_ram_addr = 0;
-    reg [15:0] next_addr = 0;
-    reg [15:0] reg_ram_data = 0;
+    reg [13:0] reg_ram_addr;
+    reg [13:0] next_addr;
+    reg [15:0] reg_ram_data;
     wire [15:0] i_ram_data;
     wire spi_pulse;
     reg reg_ram_write = 0;
@@ -53,22 +53,24 @@ module spi_ram_controller(
     // logic for next state
     always @(posedge clk) begin : curr_state_regs 
         unique if (i_qspi_cs == 1)
-            state = idle;
+            state <= idle;
         else
-            state = next_state;
+            state <= next_state;
     end : curr_state_regs
     
     always_comb begin : next_state_logic
-        next_state = state; // default is to stay in current state
+        next_state <= state; // default is to stay in current state
         unique case (state)
-            idle            : begin if (spi_pulse) next_state = latched_addr; else next_state = idle; end 
+            idle            : begin if (spi_pulse) next_state <= latched_addr; else next_state <= idle; end 
 //            wait_addr       : ;
 //            read_addr       : ;
-            latched_addr    : next_state = wait_data;
-            wait_data       : begin if (spi_pulse) next_state = latched_data; else next_state = wait_data; end
+            latched_addr    : next_state <= wait_data;
+            wait_data       : if (spi_pulse) next_state <= latched_data; //begin if (spi_pulse) next_state <= latched_data; else next_state <= wait_data; end
 //            read_data       : ;
-            latched_data    : next_state = increment_addr;
-            increment_addr  : next_state = wait_data;
+            latched_data    : next_state <= write_data;
+            write_data      : next_state <= increment_pause;
+            increment_pause : next_state <= increment_addr;
+            increment_addr  : next_state <= wait_data;
         endcase
     end : next_state_logic
     
@@ -89,21 +91,29 @@ module spi_ram_controller(
 //        end else
 //            next_state = state;
 //    end: output_regs
-
+    reg [1:0] reg_pause_counter;
     always @(state) begin: output_regs
         unique case (state)
-            idle            : reg_ram_write = 0;
-            latched_addr    : begin
-                                reg_ram_addr = i_ram_data;
-                                reg_ram_write = 0;
+            idle            : begin
+                                reg_ram_addr <= 0;
+                                //next_addr <= 0;
+                                reg_ram_data <= 0;
+                                reg_ram_write <= 0;
                               end
-            wait_data       : reg_ram_write = 0;
+            latched_addr    : begin reg_ram_addr <= i_ram_data; end
+            wait_data       : begin
+                                next_addr <= reg_ram_addr + 1;
+                              end
             latched_data    : begin
-                                reg_ram_write = 1;
-                                reg_ram_data = i_ram_data;
-                                next_addr = reg_ram_addr + 1;
+                                reg_ram_data <= i_ram_data;
                               end
-            increment_addr  : begin reg_ram_write = 0; reg_ram_addr = next_addr; end
+            write_data      : begin reg_ram_write <= 1; end
+            increment_pause : begin reg_ram_write <= 0; end
+            increment_addr  : begin
+                                reg_ram_addr <= next_addr;
+                                ;
+//                                reg_ram_addr <= next_addr;
+                              end
         endcase
     end: output_regs
 

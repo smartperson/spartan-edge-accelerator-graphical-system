@@ -17,8 +17,8 @@
 module display_demo_dvi(
     input  wire CLK,                // board clock: 100 MHz on Arty/Basys3/Nexys
     input  wire RST_BTN,            // reset button
-    input  wire esp32_in,           // HACK input pin from ESP32
-    input  wire btn_user1,           // HACK input pin from ESP32
+    output  wire esp32_io,           // HACK io pin from ESP32
+    input  wire btn_user1,           // HACK button pin from edge accelerator
     input  wire esp_qspi_clk,
     input  wire esp_qspi_q,
     input  wire esp_qspi_d,
@@ -76,6 +76,8 @@ module display_demo_dvi(
     wire v_sync;                    // vertical sync
     wire de;                        // display enable
     wire frame;                     // frame start
+    
+    assign esp32_io = v_sync; //(sy > 720) || (sy < -15);
 
     display_timings #(              // 640x480  800x600 1280x720 1920x1080
         .H_RES(1280),               //     640      800     1280      1920
@@ -111,7 +113,6 @@ module display_demo_dvi(
      .i_x(sx),
      .i_v_sync(v_sync),
      .i_pix_clk(pix_clk),
-     .i_esp32(esp32_in),
      .i_btn(btn_user1),
      .qspi_clk(esp_qspi_clk),
      .qspi_d    (esp_qspi_d),

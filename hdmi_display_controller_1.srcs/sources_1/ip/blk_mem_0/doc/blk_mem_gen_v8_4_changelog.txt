@@ -1,3 +1,23 @@
+2020.2:
+ * Version 8.4 (Rev. 4)
+ * No changes
+
+2020.1.1:
+ * Version 8.4 (Rev. 4)
+ * No changes
+
+2020.1:
+ * Version 8.4 (Rev. 4)
+ * No changes
+
+2019.2.2:
+ * Version 8.4 (Rev. 4)
+ * No changes
+
+2019.2.1:
+ * Version 8.4 (Rev. 4)
+ * No changes
+
 2019.2:
  * Version 8.4 (Rev. 4)
  * Feature Enhancement: Read Latency parameters exposed to IP GUI for URAM configurations
@@ -160,7 +180,7 @@
  * Native Vivado Release
  * There have been no functional or interface changes to this IP.  The version number has changed to support unique versioning in Vivado starting with 2013.1.
 
-(c) Copyright 2002 - 2019 Xilinx, Inc. All rights reserved.
+(c) Copyright 2002 - 2020 Xilinx, Inc. All rights reserved.
 
 This file contains confidential and proprietary information
 of Xilinx, Inc. and is protected under U.S. and

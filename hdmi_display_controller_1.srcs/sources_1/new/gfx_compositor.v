@@ -4,7 +4,6 @@ module gfx_compositor (
     input wire [15:0] i_y,
     input wire i_v_sync,
     input wire i_pix_clk,
-    input wire i_esp32,
     input wire i_btn,
     input wire qspi_clk,
     input wire qspi_d,
@@ -55,6 +54,7 @@ module gfx_compositor (
     wire [15:0] dma_addr;
     wire [15:0] dma_data;
     wire dma_we;
+    wire ram_wea;
 
     always @* //combinatorial clockless
     begin
@@ -62,21 +62,43 @@ module gfx_compositor (
             reg_ram_addr <= ram_addr_0;
         else if (ram_enable_1)
             reg_ram_addr <= ram_addr_1;
-        else if (dma_we) begin
-            reg_ram_addr <= dma_addr;
-            end
+        /*else if (dma_we)
+            reg_ram_addr <= dma_addr;*/
+        else
+            reg_ram_addr <= 0;
     end
     assign ram_addr = reg_ram_addr;
+    assign ram_wea = dma_we && i_y>720 && !ram_enable_0 && !ram_enable_1;
     reg [7:0] reg_spi_data;
     
     blk_mem_0 simple_ram_1 (
-        .clka(i_pix_clk),    // input wire clka
-        .ena(1),      // input wire ena
-        .wea(dma_we && i_y>720),      // input wire [1 : 0] wea
-        .addra(ram_addr),  // input wire [14 : 0] addra
+        .clka(clk),    // input wire clka
+//        //.ena(1),      // input wire ena
+        .wea(dma_we),      // input wire [1 : 0] wea
+        .addra(dma_addr),  // input wire [14 : 0] addra
         .dina(dma_data),    // input wire [15 : 0] dina
-        .douta(load_data)  // output wire [15 : 0] douta
+        .clkb(i_pix_clk),
+        .addrb(reg_ram_addr),
+        .doutb(load_data)  // output wire [15 : 0] douta
     );
+    /*
+      clka : IN STD_LOGIC;
+      rsta : IN STD_LOGIC;
+      ena : IN STD_LOGIC;
+      regcea : IN STD_LOGIC;
+      wea : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+      addra : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+      dina : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      douta : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      clkb : IN STD_LOGIC;
+      rstb : IN STD_LOGIC;
+      enb : IN STD_LOGIC;
+      regceb : IN STD_LOGIC;
+      web : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+      addrb : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+      dinb : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      doutb : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    */
     
     bg_compositor #( .RAM_READ_START_CYCLE(5'b10000), .RAM_MAP_ADDR(15'h2800) ) bg_compositor_0 ( //11001
         .i_x_raw        (i_x),
@@ -97,7 +119,7 @@ module gfx_compositor (
         .i_v_sync     (i_v_sync),
         .i_pix_clk    (i_pix_clk),
         .i_in_data    (load_data),
-        .i_btn      (i_esp32),
+        .i_btn      (0),
         .o_ram_enable (ram_enable_1),
         .o_addr       (ram_addr_1),
         .o_palette    (bg_palette_1),
@@ -109,7 +131,7 @@ module gfx_compositor (
         .i_x        (i_x),
         .i_y        (i_y),
         .i_v_sync   (i_v_sync),
-        .i_esp32    (reg_spi_data && 8'b11111111),
+        .i_esp32    (1),
         .o_red      (sprite_red),
         .o_green    (sprite_green),
         .o_blue     (sprite_blue),

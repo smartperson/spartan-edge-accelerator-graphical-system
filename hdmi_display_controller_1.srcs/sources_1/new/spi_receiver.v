@@ -54,7 +54,6 @@ module spi_receiver(
         bit_counter = 0;
     end 
     
-    reg prev_ready;
     always @(negedge clk) begin //latch when we got the 16th bit
         //data_ready = 0;
       if (bit_counter == 8'b0000) begin//8th (2 cycles, 4 bits each!)
@@ -90,14 +89,13 @@ module spi_receiver(
             data_ready = 1;
             reset_ready = 0;
         end
-        else if (pulse_counter == 2'b11) begin
+        else if (data_ready == 1) begin //pulse_counter == 2'b1
             data_ready = 0;
             pulse_counter = 0;
         end
-        else if (clk)
+
+        if (clk)
             reset_ready = 1;
-        else
-            data_ready = 0;
             
         if (data_ready)
             pulse_counter = pulse_counter+1;
