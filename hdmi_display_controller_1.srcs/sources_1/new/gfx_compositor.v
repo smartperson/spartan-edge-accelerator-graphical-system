@@ -68,16 +68,16 @@ module gfx_compositor (
             reg_ram_addr <= 0;
     end
     assign ram_addr = reg_ram_addr;
-    assign ram_wea = dma_we && i_y>720 && !ram_enable_0 && !ram_enable_1;
+    assign ram_wea = dma_we;// && i_y>720 && !ram_enable_0 && !ram_enable_1;
     reg [7:0] reg_spi_data;
     
     blk_mem_0 simple_ram_1 (
-        .clka(qspi_clk),    // input wire clka
-//        //.ena(1),      // input wire ena
+        .clka(clk),    // input wire clka
+        //.ena(dma_we),      // input wire ena
         .wea(dma_we),      // input wire [1 : 0] wea
         .addra(dma_addr),  // input wire [14 : 0] addra
         .dina(dma_data),    // input wire [15 : 0] dina
-        .clkb(clk),
+        .clkb(i_pix_clk),
         .addrb(reg_ram_addr),
         .doutb(load_data)  // output wire [15 : 0] douta
     );
@@ -139,7 +139,7 @@ module gfx_compositor (
     );
     
     spi_ram_controller spi_ram_controller_1 (
-//        .clk (clk),
+        .clk (clk),
         .i_qspi_din ({qspi_hd, qspi_wp, qspi_d, qspi_q}),
         .i_qspi_cs  (qspi_cs),
         .i_qspi_clk (qspi_clk),

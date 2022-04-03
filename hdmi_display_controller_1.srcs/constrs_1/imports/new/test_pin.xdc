@@ -63,15 +63,8 @@ set_property -dict {PACKAGE_PIN J13 IOSTANDARD LVCMOS33} [get_ports esp_qspi_wp]
 
 # [Place 30-876] Port 'esp_qspi_clk'  is assigned to PACKAGE_PIN 'H14'  which can only be used as the N side of a differential clock input.
 # Please use the following constraint(s) to pass this DRC check:
-create_clock -period 100.000 -name esp_qspi_clk -waveform {0.000 50.000} -add [get_ports esp_qspi_clk]
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets esp_qspi_clk_IBUF]
-
-#connect_debug_port u_ila_0/probe3 [get_nets [list esp_qspi_hd_IBUF]]
-#connect_debug_port u_ila_0/probe4 [get_nets [list esp_qspi_q_IBUF]]
-#connect_debug_port u_ila_0/probe5 [get_nets [list esp_qspi_wp_IBUF]]
-
-
-
+# create_clock -period 100.000 -name esp_qspi_clk -waveform {0.000 50.000} -add [get_ports esp_qspi_clk]
+# set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets esp_qspi_clk_IBUF]
 
 
 set_property MARK_DEBUG true [get_nets {gfx_compositor_inst/spi_ram_controller_1/reg_ram_data[4]}]
@@ -130,17 +123,19 @@ create_generated_clock -name {display_timings_inst/Q[12]} -source [get_pins disp
 create_generated_clock -name {display_timings_inst/Q[13]} -source [get_pins display_clocks_inst/MMCME2_BASE_inst/CLKOUT1] -divide_by 1 [get_pins {display_timings_inst/o_sy_reg[13]/Q}]
 create_generated_clock -name {display_timings_inst/Q[14]} -source [get_pins display_clocks_inst/MMCME2_BASE_inst/CLKOUT1] -divide_by 1 [get_pins {display_timings_inst/o_sy_reg[14]/Q}]
 create_generated_clock -name {display_timings_inst/Q[15]} -source [get_pins display_clocks_inst/MMCME2_BASE_inst/CLKOUT1] -divide_by 1 [get_pins {display_timings_inst/o_sy_reg[15]/Q}]
-create_generated_clock -name {gfx_compositor_inst/spi_ram_controller_1/state[0]} -source [get_ports CLK] -divide_by 1 [get_pins {gfx_compositor_inst/spi_ram_controller_1/state_reg[0]/Q}]
-create_generated_clock -name {gfx_compositor_inst/spi_ram_controller_1/state[1]} -source [get_ports CLK] -divide_by 1 [get_pins {gfx_compositor_inst/spi_ram_controller_1/state_reg[1]/Q}]
-create_generated_clock -name {gfx_compositor_inst/spi_ram_controller_1/state[2]} -source [get_ports CLK] -divide_by 1 [get_pins {gfx_compositor_inst/spi_ram_controller_1/state_reg[2]/Q}]
+#create_generated_clock -name {gfx_compositor_inst/spi_ram_controller_1/state[0]} -source [get_ports CLK] -divide_by 1 [get_pins {gfx_compositor_inst/spi_ram_controller_1/state_reg[0]/Q}]
+#create_generated_clock -name {gfx_compositor_inst/spi_ram_controller_1/state[1]} -source [get_ports CLK] -divide_by 1 [get_pins {gfx_compositor_inst/spi_ram_controller_1/state_reg[1]/Q}]
+#create_generated_clock -name {gfx_compositor_inst/spi_ram_controller_1/state[2]} -source [get_ports CLK] -divide_by 1 [get_pins {gfx_compositor_inst/spi_ram_controller_1/state_reg[2]/Q}]
 
-
-connect_debug_port u_ila_0/clk [get_nets [list CLK_IBUF_BUFG_1]]
-connect_debug_port dbg_hub/clk [get_nets CLK_IBUF_BUFG_1]
-
-
+#connect_debug_port u_ila_0/clk [get_nets [list CLK_IBUF_BUFG_1]]
+#connect_debug_port dbg_hub/clk [get_nets CLK_IBUF_BUFG_1]
 
 set_property MARK_DEBUG true [get_nets gfx_compositor_inst/spi_ram_controller_1/spi_pulse]
+
+
+#set_property port_width 1 [get_debug_ports u_ila_0/probe3]
+#connect_debug_port u_ila_0/probe3 [get_nets [list gfx_compositor_inst/spi_ram_controller_1/i_qspi_cs]]
+
 
 
 create_debug_core u_ila_0 ila
@@ -181,6 +176,10 @@ create_debug_port u_ila_0 probe
 set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe6]
 set_property port_width 1 [get_debug_ports u_ila_0/probe6]
 connect_debug_port u_ila_0/probe6 [get_nets [list gfx_compositor_inst/spi_ram_controller_1/spi_pulse]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA [get_debug_ports u_ila_0/probe7]
+set_property port_width 14 [get_debug_ports u_ila_0/probe7]
+connect_debug_port u_ila_0/probe7 [get_nets [list {gfx_compositor_inst/spi_ram_controller_1/next_addr[0]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[1]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[2]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[3]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[4]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[5]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[6]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[7]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[8]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[9]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[10]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[11]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[12]} {gfx_compositor_inst/spi_ram_controller_1/next_addr[13]}]]
 set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
 set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
 set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]

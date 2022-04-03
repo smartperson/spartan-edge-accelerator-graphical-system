@@ -21,6 +21,7 @@
 
 
 module spi_ram_controller(
+    input  wire clk,
     input  wire [3:0] i_qspi_din,
     input  wire i_qspi_cs,
     input  wire i_qspi_clk,
@@ -30,6 +31,7 @@ module spi_ram_controller(
     );
     
     spi_receiver spi_receiver_1 (
+        .dev_clk (clk),
         .clk  (i_qspi_clk),
         .q    (i_qspi_din[0]),
         .d    (i_qspi_din[1]),
@@ -49,7 +51,10 @@ module spi_ram_controller(
     reg reg_ram_write = 0;
 
     // logic for next state
-    always @(posedge (i_qspi_clk | i_qspi_cs)) begin : curr_state_regs 
+    //TODO: adjust the behaviors/signals we look for from the spi_receiver since now our state machine is
+    // once again running of the device clk instead of the esp32's spi clk. We cannot just assume every clock cycle that we should increment.
+    //TODO: also check for the appropriate reset condition. use the clock synchronized signals for qspi cs. I think that's the only one that's needed.
+    always @(posedge clk) begin : curr_state_regs 
         unique if (i_qspi_cs == 1)
             state <= idle;
         else
@@ -68,7 +73,7 @@ module spi_ram_controller(
             latched_data    : next_state <= increment_addr;
             write_data      : next_state <= increment_addr;
             increment_pause : next_state <= increment_addr;
-            increment_addr  : next_state <= latched_data;
+            increment_addr  : if (spi_pulse) next_state <= latched_data;
         endcase
     end : next_state_logic
     
@@ -98,20 +103,20 @@ module spi_ram_controller(
                                 reg_ram_data <= 0;
                                 reg_ram_write <= 0;
                               end
-            latched_addr    : begin reg_ram_addr <= i_ram_data; next_addr<=i_ram_data; end
+            latched_addr    : begin reg_ram_addr <= i_ram_data; end
             wait_data       : begin
-                                //next_addr <= reg_ram_addr + 1;
+                                next_addr <= reg_ram_addr + 1;
                               end
             latched_data    : begin
                                 reg_ram_data <= i_ram_data;
-                                reg_ram_addr <= next_addr;
+                                reg_ram_addr <= next_addr; //next_addr;
                                 reg_ram_write <= 1;
                               end
             write_data      : begin reg_ram_write <= 1; end
             increment_pause : begin reg_ram_write <= 0; end
             increment_addr  : begin
                                 reg_ram_write <= 0;
-                                next_addr <= reg_ram_addr + 1;
+                                // next_addr <= reg_ram_addr + 1;
                               end
         endcase
     end: output_regs
