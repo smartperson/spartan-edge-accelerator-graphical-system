@@ -29,7 +29,8 @@ module spi_receiver(
     input wire wp, //qio
     input wire hd, //qio
     output wire [15:0] o_data,
-    output wire o_data_ready
+    output wire o_data_ready,
+    output wire cs_rising
     );
     reg [4:0] bit_counter = 0;
     reg [15:0] tmp = 0;
@@ -49,6 +50,7 @@ module spi_receiver(
     wire SSEL_active = ~SSELr[1];  // SSEL is active low
     wire SSEL_startmessage = (SSELr[2:1]==2'b10);  // message starts at falling edge
     wire SSEL_endmessage = (SSELr[2:1]==2'b01);  // message stops at rising edge
+    assign cs_rising = SSEL_endmessage;
     
     // and for MOSI
     reg [1:0] MOSIr;  always @(posedge dev_clk) MOSIr <= {MOSIr[0], d};

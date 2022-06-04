@@ -30,7 +30,7 @@ module bg_compositor
     input wire i_v_sync,
     input wire i_pix_clk,
     input wire [15:0] i_in_data,
-    input wire i_btn,
+    //input wire i_btn,
     output wire o_ram_enable,
     output wire [14:0] o_addr,
     

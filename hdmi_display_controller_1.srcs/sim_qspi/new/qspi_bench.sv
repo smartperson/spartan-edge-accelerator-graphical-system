@@ -14,7 +14,7 @@ module qspi_bench();
         #20
         qspi_cs = 0;
         #20
-        qspi_data = 4'hD;
+        qspi_data = 4'h3;
         qspi_clk = 1;
         #10
         qspi_clk = 0;
@@ -84,7 +84,7 @@ module qspi_bench();
         clk = 0;
         qspi_data = 0;
         qspi_clk = 0;
-        qspi_cs = 0;
+        qspi_cs = 1;
     end
     
     always
@@ -94,7 +94,7 @@ module qspi_bench();
     end
     //connect it up to our RAM component hierarchy
     
-    wire [15:0] dma_addr;
+    wire [13:0] dma_addr;
     wire [15:0] dma_data;
     wire        dma_we;
     

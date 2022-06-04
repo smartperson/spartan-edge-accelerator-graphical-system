@@ -119,14 +119,14 @@ module gfx_compositor (
         .i_v_sync     (i_v_sync),
         .i_pix_clk    (i_pix_clk),
         .i_in_data    (load_data),
-        .i_btn      (0),
+        //.i_btn      (0),
         .o_ram_enable (ram_enable_1),
         .o_addr       (ram_addr_1),
         .o_palette    (bg_palette_1),
         .o_color      (bg_color_1),
         .o_priority   (bg_hit_1)
     );
-    
+    /*
     sprite_compositor sprite_compositor_1 (
         .i_x        (i_x),
         .i_y        (i_y),
@@ -136,7 +136,7 @@ module gfx_compositor (
         .o_green    (sprite_green),
         .o_blue     (sprite_blue),
         .o_sprite_hit   (sprite_hit)
-    );
+    );*/
     
     spi_ram_controller spi_ram_controller_1 (
         .clk (clk),

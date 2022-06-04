@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="qspi_bench_func_synth.wdb" id="1">
+      <db_ref path="qspi_bench_behav.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
             <top_module name="qspi_bench" />
@@ -11,18 +11,22 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="345635fs"></ZoomEndTime>
-      <Cursor1Time time="115000fs"></Cursor1Time>
+      <ZoomStartTime time="130000fs"></ZoomStartTime>
+      <ZoomEndTime time="320601fs"></ZoomEndTime>
+      <Cursor1Time time="215000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="217"></NameColumnWidth>
+      <NameColumnWidth column_width="205"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="16" />
+   <WVObjectSize size="11" />
    <wvobject fp_name="/qspi_bench/qspi_cs" type="logic">
       <obj_property name="ElementShortName">qspi_cs</obj_property>
       <obj_property name="ObjectShortName">qspi_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qspi_bench/spi_ram_controller_1/spi_receiver_1/cs_rising" type="logic">
+      <obj_property name="ElementShortName">cs_rising</obj_property>
+      <obj_property name="ObjectShortName">cs_rising</obj_property>
    </wvobject>
    <wvobject fp_name="/qspi_bench/qspi_clk" type="logic">
       <obj_property name="ElementShortName">qspi_clk</obj_property>
@@ -36,9 +40,13 @@
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
+   <wvobject fp_name="/qspi_bench/spi_ram_controller_1/spi_receiver_1/byte_received" type="logic">
+      <obj_property name="ElementShortName">byte_received</obj_property>
+      <obj_property name="ObjectShortName">byte_received</obj_property>
+   </wvobject>
    <wvobject fp_name="/qspi_bench/dma_addr" type="array">
-      <obj_property name="ElementShortName">dma_addr[15:0]</obj_property>
-      <obj_property name="ObjectShortName">dma_addr[15:0]</obj_property>
+      <obj_property name="ElementShortName">dma_addr[13:0]</obj_property>
+      <obj_property name="ObjectShortName">dma_addr[13:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/qspi_bench/dma_data" type="array">
       <obj_property name="ElementShortName">dma_data[15:0]</obj_property>
@@ -52,37 +60,8 @@
       <obj_property name="ElementShortName">state[31:0]</obj_property>
       <obj_property name="ObjectShortName">state[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/qspi_bench/spi_ram_controller_1/read_cycles" type="array">
-      <obj_property name="ElementShortName">read_cycles[2:0]</obj_property>
-      <obj_property name="ObjectShortName">read_cycles[2:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/qspi_bench/spi_ram_controller_1/spi_receiver_1/o_data" type="array">
       <obj_property name="ElementShortName">o_data[15:0]</obj_property>
       <obj_property name="ObjectShortName">o_data[15:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/qspi_bench/spi_ram_controller_1/spi_receiver_1/tmp" type="array">
-      <obj_property name="ElementShortName">tmp[15:0]</obj_property>
-      <obj_property name="ObjectShortName">tmp[15:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/qspi_bench/spi_ram_controller_1/spi_receiver_1/bit_counter" type="array">
-      <obj_property name="ElementShortName">bit_counter[3:0]</obj_property>
-      <obj_property name="ObjectShortName">bit_counter[3:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/qspi_bench/spi_ram_controller_1/spi_receiver_1/data_ready" type="logic">
-      <obj_property name="ElementShortName">data_ready</obj_property>
-      <obj_property name="ObjectShortName">data_ready</obj_property>
-   </wvobject>
-   <wvobject fp_name="/qspi_bench/spi_ram_controller_1/spi_receiver_1/data_pulse" type="logic">
-      <obj_property name="ElementShortName">data_pulse</obj_property>
-      <obj_property name="ObjectShortName">data_pulse</obj_property>
-   </wvobject>
-   <wvobject fp_name="/qspi_bench/spi_ram_controller_1/spi_receiver_1/prev_ready" type="logic">
-      <obj_property name="ElementShortName">prev_ready</obj_property>
-      <obj_property name="ObjectShortName">prev_ready</obj_property>
-   </wvobject>
-   <wvobject fp_name="/qspi_bench/spi_ram_controller_1/spi_receiver_1/reset_ready" type="logic">
-      <obj_property name="ElementShortName">reset_ready</obj_property>
-      <obj_property name="ObjectShortName">reset_ready</obj_property>
    </wvobject>
 </wave_config>
