@@ -1,22 +1,22 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+// Company:
+// Engineer:
+//
 // Create Date: 01/05/2020 01:10:06 AM
-// Design Name: 
+// Design Name:
 // Module Name: bg_compositor
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -33,7 +33,7 @@ module bg_compositor
     //input wire i_btn,
     output wire o_ram_enable,
     output wire [14:0] o_addr,
-    
+
     output wire [2:0] o_palette,
     output wire [3:0] o_color,
     output wire o_priority
@@ -45,7 +45,7 @@ module bg_compositor
     wire sprite_hit_x, sprite_hit_y;
     reg [2:0] sprite_render_x;
     reg [2:0] sprite_render_y;
-    
+
     reg [15:0] i_x, i_y;
     reg [13:0] x_scroll = 1; //NOTE: change this to experiment with craziness
     reg [9:0] y_scroll = (RAM_MAP_ADDR == 15'h2000) ? 304 : 304;
@@ -55,10 +55,10 @@ module bg_compositor
     assign i_x = i_x_raw + x_scroll;
     assign i_y = (i_y_raw + y_scroll)%1024;
 //    assign i_x = i_x_raw + x_scroll;
-    
+
     reg curr_tile_index;
 //    assign curr_tile_index = (((i_x+1) & 31) >= (x_scroll & 31)) ? 1 : 0;
-    
+
     always @(posedge i_v_sync) begin
         if (RAM_MAP_ADDR == 15'h2000) begin
 //            if (y_scroll == 0)
@@ -86,7 +86,7 @@ module bg_compositor
 //        x_scroll <= x_scroll+1;
         x_scroll <= 1;
     end
-    
+
 //    always @(posedge i_y_raw[0]) begin
 //        if (RAM_MAP_ADDR == 15'h2000)
 //            if (x_scroll < 2048)
@@ -94,16 +94,16 @@ module bg_compositor
 //            else
 //                x_scroll <= 0;
 //    end
-    
+
 //    always @(posedge i_btn) begin
 //        if (RAM_MAP_ADDR == 15'h2000)
 //            x_scroll <= x_scroll+1;
 //    end
 
-    
+
     assign sprite_hit_x = 1;
     assign sprite_hit_y = 1;
-    
+
 //    assign  //TODO is this still right? Causing problems?
     reg [2:0] selected_palette;
     reg [3:0] selected_color;
@@ -118,14 +118,14 @@ module bg_compositor
 //        if (i_x_raw[4:0] == 5'b11111)
              //+1?
     end
-    always @(posedge i_pix_clk) begin //neg? 
+    always @(posedge i_pix_clk) begin //neg?
         if (i_x_raw[4:0] == 5'b11111) begin //this one should always be done on the last clock cycle for the tile
             reg_tile_data[0] = reg_tile_data[1];
             reg_tile_data[1] = reg_tile_data[2];
             reg_tile_attr[0] = reg_tile_attr[1];
             reg_tile_attr[1] = reg_tile_attr[2];
         end
-    end 
+    end
 
 
     always @(negedge i_pix_clk) begin
@@ -200,7 +200,7 @@ module bg_compositor
 //                reg_tile_attr[1] = reg_tile_attr[2];
 
 //            end
-            default: ; 
+            default: ;
         endcase
     end
     assign o_ram_enable = reg_ram_enable;

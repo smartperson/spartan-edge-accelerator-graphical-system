@@ -15,7 +15,7 @@ Seeed doesn't provide any information on using the ESP32 as an application proce
 and then act as a wireless/bluetooth peripheral for an attached Arduino. I'm not interested in that. The ESP32 is a capable microcontroller on its own, but it's not fast
 enough to drive an HD display on its own.
 
-That's where the FPGA comes in. I want the Spartan 7 on this board to provide graphics capabilities for programs running on the ESP32.
+That's where the FPGA comes in. I want the Spartan 7 on this board to provide graphics capabilities for programs running on the ESP32. The ESP32 work is being tracked in [this sibling respository](https://github.com/smartperson/spartan-edge-accelerator-esp32-qspi-to-fpga).
 
 ## Key capabilities
 

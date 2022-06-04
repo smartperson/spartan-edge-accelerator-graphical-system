@@ -15,7 +15,7 @@ module gfx_compositor (
     output wire [7:0] o_green,
     output wire [7:0] o_blue
     );
-    
+
     wire bg_hit_0, bg_hit_1, sprite_hit;
     wire [3:0] bg_color_0;
     wire [2:0] bg_palette_0;
@@ -24,14 +24,14 @@ module gfx_compositor (
     wire [7:0] sprite_red;
     wire [7:0] sprite_green;
     wire [7:0] sprite_blue;
-    
+
     wire [15:0] ram_data;
     wire ram_write;
     wire ram_enable_0, ram_enable_1;
     wire [14:0] ram_addr, ram_addr_0, ram_addr_1;
     reg [14:0] reg_ram_addr;
     wire [15:0] load_data;
-    
+
     localparam [0:15][0:15][2:0][7:0] cg_palettes =  {
         384'hDFDFDFE8F0F800581020680040780060880088A000A8B80098E0E0000000D8381858F85898E0E0000000E8F0F8F85858,
         384'hDFDFDFE8F0F8F8F8F800000000B8F800C8F800E0F800F8F898E0E000000058A8F0F8F8F898E0E0000000D8A038F8D870,
@@ -70,7 +70,7 @@ module gfx_compositor (
     assign ram_addr = reg_ram_addr;
     assign ram_wea = dma_we;// && i_y>720 && !ram_enable_0 && !ram_enable_1;
     reg [7:0] reg_spi_data;
-    
+
     blk_mem_0 simple_ram_1 (
         .clka(clk),    // input wire clka
         //.ena(dma_we),      // input wire ena
@@ -99,7 +99,7 @@ module gfx_compositor (
       dinb : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       doutb : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     */
-    
+
     bg_compositor #( .RAM_READ_START_CYCLE(5'b10000), .RAM_MAP_ADDR(15'h2800) ) bg_compositor_0 ( //11001
         .i_x_raw        (i_x),
         .i_y_raw        (i_y),
@@ -112,7 +112,7 @@ module gfx_compositor (
         .o_color    (bg_color_0),
         .o_priority   (bg_hit_0)
     );
-    
+
     bg_compositor #( .RAM_READ_START_CYCLE(5'b11000), .RAM_MAP_ADDR(15'h2000) ) bg_compositor_1 ( //11001
         .i_x_raw          (i_x),
         .i_y_raw          (i_y),
@@ -137,7 +137,7 @@ module gfx_compositor (
         .o_blue     (sprite_blue),
         .o_sprite_hit   (sprite_hit)
     );*/
-    
+
     spi_ram_controller spi_ram_controller_1 (
         .clk (clk),
         .i_qspi_din ({qspi_hd, qspi_wp, qspi_d, qspi_q}),
@@ -147,7 +147,7 @@ module gfx_compositor (
         .o_ram_data (dma_data),
         .o_ram_write(dma_we)
     );
-    
+
     reg [7:0] reg_red, reg_green, reg_blue;
     //hack to add dma_we just so that synthesis keeps our variable and we can capture it in the ILA
     assign reg_red = sprite_hit? sprite_red :      ( (bg_color_1 == 0) ? cg_palettes[bg_palette_0][bg_color_0][2] : cg_palettes[bg_palette_1][bg_color_1][2] );

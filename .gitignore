@@ -77,7 +77,7 @@ xvlog.*
  *.runs/
  *.sim/
  *.hw/
- *.ip_user_files/    
+ *.ip_user_files/
  *.jou
  *.log
  *.str

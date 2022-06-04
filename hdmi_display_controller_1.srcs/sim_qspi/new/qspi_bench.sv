@@ -78,7 +78,7 @@ module qspi_bench();
         #20
         qspi_cs = 1;
     end
-    
+
     reg clk = 0;
     initial begin
         clk = 0;
@@ -86,18 +86,18 @@ module qspi_bench();
         qspi_clk = 0;
         qspi_cs = 1;
     end
-    
+
     always
     begin
         #5
         clk = ~clk;
     end
     //connect it up to our RAM component hierarchy
-    
+
     wire [13:0] dma_addr;
     wire [15:0] dma_data;
     wire        dma_we;
-    
+
     spi_ram_controller spi_ram_controller_1 (
         .clk (clk),
         .i_qspi_din ({qspi_data[3], qspi_data[2], qspi_data[0], qspi_data[1]}),

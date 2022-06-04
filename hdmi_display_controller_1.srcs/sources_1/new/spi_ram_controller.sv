@@ -1,22 +1,22 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+// Company:
+// Engineer:
+//
 // Create Date: 09/25/2020 09:41:44 PM
-// Design Name: 
+// Design Name:
 // Module Name: spi_ram_controller
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -33,7 +33,7 @@ module spi_ram_controller(
     wire [15:0] i_ram_data;
     wire cs_rising;
     wire spi_pulse;
-    
+
     spi_receiver spi_receiver_1 (
         .dev_clk (clk),
         .clk  (i_qspi_clk),
@@ -46,7 +46,7 @@ module spi_ram_controller(
         .o_data_ready (spi_pulse),
         .cs_rising (cs_rising)
     );
-    enum {idle, latched_addr, wait_data, latched_data, increment_addr} state, next_state; 
+    enum {idle, latched_addr, wait_data, latched_data, increment_addr} state, next_state;
     reg [13:0] reg_ram_addr;
     reg [13:0] next_addr;
     reg [15:0] reg_ram_data;
@@ -56,13 +56,13 @@ module spi_ram_controller(
     //TODO: adjust the behaviors/signals we look for from the spi_receiver since now our state machine is
     // once again running of the device clk instead of the esp32's spi clk. We cannot just assume every clock cycle that we should increment.
     //DONE? also check for the appropriate reset condition. use the clock synchronized signals for qspi cs. I think that's the only one that's needed.
-//    always @(posedge clk) begin : curr_state_regs 
+//    always @(posedge clk) begin : curr_state_regs
 //        if (cs_rising)
 //            state = idle;
 //        else
 //            state = next_state;
 //    end : curr_state_regs
-    
+
 //    reg [1:0] reg_pause_counter;
 //    always @(state) begin: output_regs
 //        unique case (state)
@@ -105,7 +105,7 @@ module spi_ram_controller(
 //        endcase
 //    end: output_regs
 
-    always @(posedge clk) begin : curr_state_regs 
+    always @(posedge clk) begin : curr_state_regs
         if (cs_rising)
             state = idle;
         else
@@ -115,9 +115,9 @@ module spi_ram_controller(
     always_comb begin : next_state_logic
         //next_state = state; // default is to stay in current state
         unique case (state)
-            idle            : begin if (spi_pulse) next_state = latched_addr; else next_state = idle; end 
+            idle            : begin if (spi_pulse) next_state = latched_addr; else next_state = idle; end
             latched_addr    : begin next_state = wait_data; end
-            wait_data       : begin 
+            wait_data       : begin
                                 if (spi_pulse) next_state = latched_data;
                                 else next_state = wait_data; //begin if (spi_pulse) next_state <= latched_data; else next_state <= wait_data;
                               end
@@ -129,7 +129,7 @@ module spi_ram_controller(
 
 // TODO: Separate the state controls (next_state), logic/output controls (assign_variable = 1), and actual actions (variable = variable2)
 // next_state and output controls can use the same sensitivity list probably (state)
-// actual actions should use clk as sensitivity 
+// actual actions should use clk as sensitivity
 //    always @(state, spi_pulse, i_ram_data, reg_ram_addr, next_addr, reg_ram_write, reg_ram_data) begin: output_regs
       always @(posedge clk) begin: output_regs
         unique case (state)
@@ -174,7 +174,7 @@ module spi_ram_controller(
     end: output_regs
 
 
-    
+
     assign o_ram_write = reg_ram_write;
     assign o_ram_addr  = reg_ram_addr;
     assign o_ram_data  = reg_ram_data;
